@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="" method="">
+    <form action="{{ route('event.create') }}" method="POST">
     @csrf
       {{-- タイトルフォーム --}}
       <div class="form-group">
@@ -45,8 +45,8 @@
       </div>
       {{-- もくもく会の詳細 --}}
       <div class="form-group">
-        <label for="contents">{{ '詳細' }}<span class="badge badge-danger ml-2">{{ '必須' }}</span></label>
-        <textarea class="form-control" id="contents" rows="10"></textarea>
+        <label for="content">{{ '詳細' }}<span class="badge badge-danger ml-2">{{ '必須' }}</span></label>
+        <textarea class="form-control" name="content" id="content" rows="10" placeholder="もくもく会の詳細を記載してください。"></textarea>
       </div>
       <button type="submit" class="btn btn-success w-100">
         {{ 'もくもく会を開催する' }}
