@@ -25,6 +25,13 @@ class EventRequest extends FormRequest
     {
         $validate = [];
 
+        $validate += [
+            // タイトル必須
+            'title' => [
+                'required',
+            ],
+        ];
+
         return $validate;
     }
 }

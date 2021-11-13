@@ -7,7 +7,12 @@
       {{-- タイトルフォーム --}}
       <div class="form-group">
         <label for="title">{{ 'タイトル' }}<span class="badge badge-danger ml-2">{{ '必須' }}</span></label>
-        <input type="text" class="form-control" name="title" id="title">
+        <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="title">
+        @if ($errors->has('title'))
+          <span class="invalid-feedback" role="alert">
+            {{ $errors->first('title') }}
+          </span>
+        @endif
       </div>
       {{-- カテゴリープルダウン --}}
       <div class="form-group w-50">

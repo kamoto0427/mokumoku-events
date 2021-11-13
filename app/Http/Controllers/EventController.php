@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\EventRequest; // 追加
 
 class EventController extends Controller
 {
@@ -38,7 +39,7 @@ class EventController extends Controller
     /**
      * もくもく会登録処理
      */
-    public function create(Request $request)
+    public function create(EventRequest $request) // Request→EventRequestに修正
     {
         try {
             // トランザクション開始
