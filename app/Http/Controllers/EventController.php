@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; // 追加
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
