@@ -23,7 +23,7 @@ class Event extends Model
         'date',
         'start_time',
         'end_time',
-        'contents',
+        'content',
         'entry_fee',
     ];
 
@@ -58,7 +58,7 @@ class Event extends Model
             'date'        => $request->date,
             'start_time'  => $request->start_time,
             'end_time'    => $request->end_time,
-            'contents'    => $request->content,
+            'content'     => $request->content,
             'entry_fee'   => $request->entry_fee,
         ]);
     }

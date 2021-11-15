@@ -27,7 +27,7 @@ class CreateEventsTable extends Migration
             // 終了時間
             $table->time('end_time');
             // 詳細
-            $table->text('contents');
+            $table->text('content');
             // 参加費用
             $table->integer('entry_fee');
             $table->timestamps();

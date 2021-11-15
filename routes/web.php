@@ -7,6 +7,9 @@ use App\Http\Controllers\CategoryController;
 // もくもく会一覧画面
 Route::get('/', [EventController::class, 'index'])
     ->name('event.index');
+// もくもく会詳細画面
+Route::get('/event/{id}', [EventController::class, 'show'])
+    ->name('event.show');
 // もくもく会登録画面
 Route::get('/event/register', [EventController::class, 'register'])
     ->name('event.register');

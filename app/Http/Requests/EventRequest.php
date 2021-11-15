@@ -26,8 +26,37 @@ class EventRequest extends FormRequest
         $validate = [];
 
         $validate += [
-            // タイトル必須
+            // タイトル必須・50文字以内
             'title' => [
+                'required',
+                'max:50',
+            ],
+            // カテゴリー必須
+            'category_id' => [
+                'required',
+            ],
+            // 日付
+            'date' => [
+                'required',
+                'after:yesterday',
+            ],
+            // 開始時間
+            'start_time' => [
+                'required',
+            ],
+            // 終了時間
+            'end_time' => [
+                'required',
+            ],
+            // 参加費
+            'entry_fee' => [
+                'required',
+                'numeric',
+                'integer',
+                'min:0',
+            ],
+            // 詳細
+            'content' => [
                 'required',
             ],
         ];

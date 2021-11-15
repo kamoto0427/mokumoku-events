@@ -28,6 +28,17 @@ class EventController extends Controller
     }
 
     /**
+     * 詳細画面
+     */
+    public function show($id)
+    {
+        // $id(event_id)をもとに、eventsテーブルの特定のレコードに絞り込む
+        $event = $this->event->findEventByEventId($id);
+
+        return view('event.show');
+    }
+
+    /**
      * もくもく会登録画面
      */
     public function register()

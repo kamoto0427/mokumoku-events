@@ -19,7 +19,7 @@
     #mokumoku-lists {
         filter:drop-shadow(2px 4px 6px #000);
     }
-    .contents-filed {
+    .content-filed {
         width: 60%;
     }
 </style>
@@ -37,14 +37,14 @@
             <label for="entry-fee"><span class="badge badge-success p-2">{{ '参加費' }}</span></label>
             <p class="text-danger font-weight-bold p-1 h5">{{ $event->entry_fee.'円' }}</p>
         </div>
-        <div class="contents-wrapper d-flex">
-            <div class="contents-filed">
+        <div class="content-wrapper d-flex">
+            <div class="content-filed">
                 <p class="card-text text-left">
-                    {{ mb_substr($event->contents, 0, 100, 'UTF-8').'...' }}
+                    {{ mb_substr($event->content, 0, 100, 'UTF-8').'...' }}
                 </p>
             </div>
             <div class="btn-filed ml-auto">
-                <button class="btn btn-primary mr-3">{{ '詳細' }}</button>
+                <a href="{{ route('event.show', ['id' => $event->event_id]) }}" class="btn btn-primary mr-3">{{ '詳細' }}</a>
                 <button class="btn btn-info mr-3">{{ '編集' }}</button>
                 <button class="btn btn-danger mr-3">{{ '削除' }}</button>
             </div>
