@@ -47,6 +47,17 @@ class Event extends Model
     }
 
     /**
+     * idをもとにeventsテーブルから特定のレコードに絞り込む
+     * 
+     * @param int $id イベントID
+     * @return Event
+     */
+    public function findEventByEventId($id)
+    {
+        return $this->find($id);
+    }
+
+    /**
      * 登録処理 eventsテーブルにデータをinsert
      * 
      */
