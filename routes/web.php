@@ -16,6 +16,9 @@ Route::get('/event/register', [EventController::class, 'register'])
 // もくもく会登録処理
 Route::post('/event/create', [EventController::class, 'create'])
     ->name('event.create');
+// もくもく会編集画面
+Route::get('event/edit/{id}', [EventController::class, 'edit'])
+    ->name('event.edit');
 
 // カテゴリー一覧画面
 Route::get('/category/index', [CategoryController::class, 'index'])
