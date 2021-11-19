@@ -111,4 +111,20 @@ class EventController extends Controller
 
         return view('event.edit', compact('categories', 'event'));
     }
+
+    /**
+     * 更新処理
+     */
+    public function update(Request $request)
+    {
+        // イベントIDを取得
+        $eventId = $request->event_id;
+
+        // イベントIDをもとに更新対象のレコードを1件取得
+        $event = $this->event->findEventByEventId($eventId);
+
+        // 更新対象のレコードの更新処理を実行
+        $isUpdated = $this->event->updatedEventData($request, $event);
+        return redirect()->route('event.index')->with('success', 'もくもく会の更新に成功しました。');
+    }
 }
