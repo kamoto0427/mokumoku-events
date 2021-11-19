@@ -77,7 +77,7 @@ class EventController extends Controller
     /**
      * もくもく会登録処理
      */
-    public function create(EventRequest $request) // Request→EventRequestに修正
+    public function create(EventRequest $request)
     {
         try {
             // トランザクション開始
@@ -115,7 +115,7 @@ class EventController extends Controller
     /**
      * 更新処理
      */
-    public function update(Request $request)
+    public function update(EventRequest $request)
     {
         // イベントIDを取得
         $eventId = $request->event_id;
@@ -123,8 +123,21 @@ class EventController extends Controller
         // イベントIDをもとに更新対象のレコードを1件取得
         $event = $this->event->findEventByEventId($eventId);
 
-        // 更新対象のレコードの更新処理を実行
-        $isUpdated = $this->event->updatedEventData($request, $event);
+        try {
+            DB::beginTransaction();
+            // 更新対象のレコードの更新処理を実行
+            $isUpdated = $this->event->updatedEventData($request, $event);
+            
+            // 処理に成功したらコミット
+            DB::commit();
+        } catch (\Throwable $e) {
+            // 処理に失敗したらロールバック
+            DB::rollback();
+            // エラーログ
+            \Log::error($e);
+            // 登録処理失敗時にリダイレクト
+            return redirect()->route('event.index')->with('error', 'もくもく会の更新に失敗しました。');
+        }
         return redirect()->route('event.index')->with('success', 'もくもく会の更新に成功しました。');
     }
 }
