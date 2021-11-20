@@ -22,6 +22,9 @@ Route::get('event/edit/{id}', [EventController::class, 'edit'])
 // もくもく会更新処理
 Route::post('event/update', [EventController::class, 'update'])
     ->name('event.update');
+// もくもく会削除処理
+Route::post('event/delete/{id}', [EventController::class, 'delete'])
+    ->name('event.delete');
 
 // カテゴリー一覧画面
 Route::get('/category/index', [CategoryController::class, 'index'])
