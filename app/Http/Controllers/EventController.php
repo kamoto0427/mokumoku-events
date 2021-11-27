@@ -19,10 +19,19 @@ class EventController extends Controller
     /**
      * イベント一覧画面
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Eloquentでeventsテーブルにあるデータを全て取得
-        $events = $this->event->allEventsData();
+        // 検索したキーワード
+        $word = $request->search;
+
+        // 検索フォームに文字が入力されているか判定
+        if (!is_null($word)) {
+            // キーワードをもとに、部分一致するイベントを取得
+            $events = $this->event->searchWord($word);
+        } else {
+            // Eloquentでeventsテーブルにあるデータを全て取得
+            $events = $this->event->allEventsData();
+        }
 
         return view('event.index', compact('events'));
     }
