@@ -6,7 +6,7 @@ use App\Models\Event;
 use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\EventRequest; // 追加
+use App\Http\Requests\EventRequest;
 
 class EventController extends Controller
 {
